@@ -10,15 +10,15 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.snc.app.Calculator;
+import com.snc.app.AdvancedCalculator;
 
-public class CalculatorTest {
+public class AdvancedCalculatorTest {
 
-	private static Calculator calculator;
+	private static AdvancedCalculator advancedCalculator;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		calculator = new Calculator();
+		advancedCalculator = new AdvancedCalculator();
 	}
 
 	@AfterClass
@@ -34,7 +34,7 @@ public class CalculatorTest {
 	public void tearDown() throws Exception {
 	}
 
-	@org.junit.Test
+	@Test
 	public void failedTest() {
 		fail("Not yet implemented");
 	}
@@ -46,29 +46,13 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testAdd() {
-		Assert.assertEquals(5, calculator.add(2, 3));
+	public void testSquareOfANumber() {
+		Assert.assertEquals("", 5, advancedCalculator.square(16));
 	}
 
 	@Test
-	public void testSubtract() {
-		Assert.assertEquals(2, calculator.subtract(5, 3));
+	public void testCubeOfANumber() {
+		Assert.assertEquals("", 5, advancedCalculator.cube(16));
 	}
 
-	@Test
-	public void testMultiply() {
-		Assert.assertEquals(15, calculator.multiply(3, 5));
-	}
-
-	@Test
-	public void testDivide() {
-		Assert.assertEquals(2, calculator.divide(10, 5));
-	}
-
-	@Test
-	public void testDivideByZero() {
-		Assert.assertThrows(IllegalArgumentException.class, () -> {
-			calculator.divide(10, 0);
-		});
-	}
 }
