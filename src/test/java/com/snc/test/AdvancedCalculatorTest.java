@@ -55,4 +55,8 @@ public class AdvancedCalculatorTest {
 		Assert.assertEquals("", 5, advancedCalculator.cube(16));
 	}
 */
+	@Test
+	public void testAdd() {
+		Assert.assertEquals(5, calculator.add(2, 3));
+	}
 }
