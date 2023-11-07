@@ -1,9 +1,6 @@
 // Declarative //
 pipeline {
     agent any
-    tools {
-    	maven 'rama01Maven'
-    }
     stages {
         stage('Build') {
             steps {
@@ -13,9 +10,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-		//sh 'mvn test'
-		sleep(5);
-                //sonarSummaries()
                 snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Veracode", "applicationName": "VeraDemo10", "securityToolId": "0248c4acc3e53510a653f92f0501316e"}'
             }
 	    
