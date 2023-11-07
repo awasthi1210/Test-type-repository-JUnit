@@ -1,10 +1,7 @@
 // Declarative //
 pipeline {
     agent any
-    tools {
-    maven 'rama01Maven'
-    nodejs 'default-nodejs'
-    }
+
     stages {
         stage('Build') {
             steps {
@@ -14,19 +11,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-		script{
-			sh 'mvn test -Dmaven.test.failure.ignore=true || true'
-		}
-		sonarSummaries()
-                //snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Veracode", "applicationName": "VeraDemo10", "securityToolId": "0248c4acc3e53510a653f92f0501316e"}'
+                snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Veracode", "applicationName": "VeraDemo10", "securityToolId": "0248c4acc3e53510a653f92f0501316e"}'
             }
-		post {
-			always {
-				//sh 'ls -lta && cd target/ && ls -lta && cd surefire-reports/ && ls -lta'
-				junit "target/surefire-reports/TEST-com.snc.suite.TestAll.xml"
-			}
-		}
-	    
         }
         stage('Deploy') {
             steps {
