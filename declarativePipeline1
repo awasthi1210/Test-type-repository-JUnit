@@ -1,7 +1,9 @@
 // Declarative //
 pipeline {
     agent any
-
+    tools {
+    	maven 'rama01Maven'
+    }
     stages {
         stage('Build') {
             steps {
