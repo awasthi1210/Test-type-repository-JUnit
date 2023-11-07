@@ -49,14 +49,11 @@ public class AdvancedCalculatorTest {
 	public void testSquareOfANumber() {
 		Assert.assertEquals("", 5, advancedCalculator.square(16));
 	}
-
-	@Test
-	public void testCubeOfANumber() {
-		Assert.assertEquals("", 5, advancedCalculator.cube(16));
-	}
 */
 	@Test
-	public void testAdd() {
-		Assert.assertEquals(5, calculator.add(2, 3));
+	public void testCubeOfANumber() {
+		Assert.assertEquals(5, advancedCalculator.cube(16));
 	}
+
+
 }
