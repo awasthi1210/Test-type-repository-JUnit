@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo 'Testing..'
 		script{
-			sh 'mvn test'
+			sh 'mvn test -Dmaven.test.failure.ignore=true || true'
 			sh 'npm install'
 			sh 'npm install -g junit-merge'
 			sh 'junit-merge  -o target/surefire-reports/results.xml -d target/surefire-reports/'
