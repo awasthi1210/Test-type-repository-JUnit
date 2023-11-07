@@ -26,7 +26,6 @@ pipeline {
 		post {
 			always {
 				sh 'ls -lta && cd target/ && ls -lta && cd surefire-reports/ && ls -lta'
-				junit "results.xml'
 				junit "target/surefire-reports/results.xml"
 			}
 		}
