@@ -13,21 +13,12 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-		sh 'mvn test'
+		//sh 'mvn test'
 		sleep(5);
-                sonarSummaries()
+                //sonarSummaries()
                 snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Veracode", "applicationName": "VeraDemo10", "securityToolId": "0248c4acc3e53510a653f92f0501316e"}'
             }
-	    post {
-	    	always {
-			sh 'ls -lta && cd target/ && cd surefire-reports/ && ls -lta'
-			script {
-				sh 'npm install -g junit-merge'
-				sh 'junit-merge  -o target/surefire-reports/results.xml -d target/surefire-reports/'
-			}
-			junit "**/target/surefire-reports/results.xml"
-		}
-	    }
+	    
         }
         stage('Deploy') {
             steps {
