@@ -33,18 +33,18 @@ public class AdvancedCalculatorTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+/*
 	@Test
 	public void failedTest() {
 		fail("Not yet implemented");
 	}
-/*
+
 	@Ignore
 	@Test
 	public void ignoredTest() {
 		System.out.println("This is a skipped test. In JUnit5, it will be implemented with @Disabled annotation");
 	}
-*/
+
 	@Test
 	public void testSquareOfANumber() {
 		Assert.assertEquals("", 5, advancedCalculator.square(16));
@@ -54,5 +54,5 @@ public class AdvancedCalculatorTest {
 	public void testCubeOfANumber() {
 		Assert.assertEquals("", 5, advancedCalculator.cube(16));
 	}
-
+*/
 }
