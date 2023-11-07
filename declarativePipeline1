@@ -1,6 +1,10 @@
 // Declarative //
 pipeline {
     agent any
+    tools {
+    maven 'rama01Maven'
+    nodejs 'default-nodejs'
+    }
     stages {
         stage('Build') {
             steps {
@@ -10,8 +14,20 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Veracode", "applicationName": "VeraDemo10", "securityToolId": "0248c4acc3e53510a653f92f0501316e"}'
+		script{
+			sh 'mvn test'
+			sh 'npm install'
+			sh 'npm install -g junit-merge'
+			sh 'junit-merge  -o target/surefire-reports/results.xml -d target/surefire-reports/'
+		}
+		sonarSummaries()
+                //snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Veracode", "applicationName": "VeraDemo10", "securityToolId": "0248c4acc3e53510a653f92f0501316e"}'
             }
+		post {
+			always {
+				junit "**/target/surefire-reports/results.xml"
+			}
+		}
 	    
         }
         stage('Deploy') {
