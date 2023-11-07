@@ -21,7 +21,10 @@ pipeline {
 	    post {
 	    	always {
 			sh 'ls -lta && cd target/ && cd surefire-reports/ && ls -lta'
-			junit-merge  -o target/surefire-reports/results.xml -d target/surefire-reports/
+			script {
+				sh 'npm install -g junit-merge'
+				sh 'junit-merge  -o target/surefire-reports/results.xml -d target/surefire-reports/'
+			}
 			junit "**/target/surefire-reports/results.xml"
 		}
 	    }
